@@ -21,7 +21,7 @@
   },
   "dependencies": {
     "@cloudcmd/dropbox": "^5.0.2",
-    "dropboxify": "^2.0.0",
+    "dropboxify": "^3.0.1",
     "squad": "^3.0.0",
     "string-to-stream": "^3.0.1",
     "try-to-catch": "^3.0.0"
