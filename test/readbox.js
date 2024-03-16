@@ -1,14 +1,15 @@
 'use strict';
 
-const test = require('supertape');
-const stub = require('@cloudcmd/stub');
-const stringToStream = require('string-to-stream');
 const mockRequire = require('mock-require');
+const {stopAll, reRequire} = mockRequire;
+const {test, stub} = require('supertape');
+
+const stringToStream = require('string-to-stream');
+
 const tryToCatch = require('try-to-catch');
 
 const read = require('..');
 
-const {reRequire} = mockRequire;
 const pullout = require('pullout');
 
 const stringify = (json) => JSON.stringify(json, null, 4);
@@ -34,9 +35,7 @@ test('dropbox: read: error', async (t) => {
     const options = {};
     
     const createReadStream = stub();
-    const dropboxify = async () => {
-        throw error;
-    };
+    const dropboxify = stub().rejects(error);
     
     mockRequire('dropboxify', dropboxify);
     mockRequire('@cloudcmd/dropbox', {
@@ -46,6 +45,8 @@ test('dropbox: read: error', async (t) => {
     const read = reRequire('..');
     
     const [e] = await tryToCatch(read, token, path, options);
+    stopAll();
+    
     t.equal(e, error, 'should return error');
     t.end();
 });
@@ -55,12 +56,9 @@ test('dropbox: read: not dir', async (t) => {
     const path = '/';
     const file = 'hello';
     
-    const createReadStream = stub()
-        .returns(stringToStream(file));
+    const createReadStream = stub().returns(stringToStream(file));
     
-    const dropboxify = async () => {
-        throw Error('path/not_folder/');
-    };
+    const dropboxify = stub().rejects(Error('path/not_folder/'));
     
     mockRequire('dropboxify', dropboxify);
     mockRequire('@cloudcmd/dropbox', {
@@ -72,7 +70,9 @@ test('dropbox: read: not dir', async (t) => {
     const stream = await read(token, path);
     const result = await pullout(stream, 'string');
     
-    t.equal(result, file, 'should equal');
+    stopAll();
+    
+    t.equal(result, file);
     t.end();
 });
 
@@ -86,9 +86,7 @@ test('dropbox: read: result', async (t) => {
     
     const createDropboxDownloadStream = stub();
     
-    const dropboxify = async () => {
-        return list;
-    };
+    const dropboxify = stub().resolves(list);
     
     mockRequire('dropboxify', dropboxify);
     mockRequire('dropbox-stream', {
@@ -102,7 +100,9 @@ test('dropbox: read: result', async (t) => {
     const stream = await read(token, path);
     const result = await pullout(stream, 'string');
     
-    t.equal(result, expected, 'should equal');
+    stopAll();
+    
+    t.equal(result, expected);
     t.end();
 });
 
@@ -115,7 +115,7 @@ test('dropbox: read: result: type: directory', async (t) => {
     };
     
     const createDropboxDownloadStream = stub();
-    const dropboxify = async () => list;
+    const dropboxify = stub().resolves(list);
     
     mockRequire('dropboxify', dropboxify);
     mockRequire('dropbox-stream', {
@@ -125,7 +125,9 @@ test('dropbox: read: result: type: directory', async (t) => {
     const read = reRequire('..');
     const {type} = await read(token, path);
     
-    t.equal(type, 'directory', 'should equal');
+    stopAll();
+    
+    t.equal(type, 'directory');
     t.end();
 });
 
@@ -138,7 +140,7 @@ test('dropbox: read: result: type: directory: root', async (t) => {
     };
     
     const createDropboxDownloadStream = stub();
-    const dropboxify = async () => list;
+    const dropboxify = stub().resolves(list);
     
     mockRequire('dropboxify', dropboxify);
     mockRequire('dropbox-stream', {
@@ -146,6 +148,7 @@ test('dropbox: read: result: type: directory: root', async (t) => {
     });
     
     const read = reRequire('..');
+    
     const stream = await read(token, path, {
         root: '/hello',
     });
@@ -153,7 +156,9 @@ test('dropbox: read: result: type: directory: root', async (t) => {
     const str = await pullout(stream, 'string');
     const json = JSON.parse(str);
     
-    t.equal(json.path, '/world', 'should equal');
+    stopAll();
+    
+    t.equal(json.path, '/world');
     t.end();
 });
 
@@ -162,12 +167,9 @@ test('dropbox: read: not dir: type: file', async (t) => {
     const path = '/';
     const file = 'hello';
     
-    const createReadStream = stub()
-        .returns(stringToStream(file));
+    const createReadStream = stub().returns(stringToStream(file));
     
-    const dropboxify = async () => {
-        throw Error('path/not_folder/');
-    };
+    const dropboxify = stub().rejects(Error('path/not_folder/'));
     
     mockRequire('dropboxify', dropboxify);
     mockRequire('@cloudcmd/dropbox', {
@@ -177,8 +179,8 @@ test('dropbox: read: not dir: type: file', async (t) => {
     const read = reRequire('..');
     
     const {type} = await read(token, path);
+    stopAll();
     
-    t.equal(type, 'file', 'should equal');
+    t.equal(type, 'file');
     t.end();
 });
-
