@@ -20,7 +20,7 @@
     "fix:lint": "madrun fix:lint"
   },
   "dependencies": {
-    "@cloudcmd/dropbox": "^4.0.3",
+    "@cloudcmd/dropbox": "^5.0.2",
     "dropboxify": "^2.0.0",
     "squad": "^3.0.0",
     "string-to-stream": "^3.0.1",
