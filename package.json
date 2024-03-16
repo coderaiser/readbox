@@ -37,7 +37,7 @@
     "nyc": "^15.0.0",
     "pullout": "^4.0.0",
     "putout": "^35.7.5",
-    "supertape": "^2.0.1"
+    "supertape": "^10.4.0"
   },
   "keywords": [
     "directory",
