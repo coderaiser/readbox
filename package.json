@@ -1,6 +1,7 @@
 {
   "name": "readbox",
   "version": "2.2.2",
+  "type": "commonjs",
   "main": "lib/readbox.js",
   "description": "dropbox read directory or file",
   "author": "",
@@ -27,6 +28,7 @@
     "try-to-catch": "^3.0.0"
   },
   "devDependencies": {
+    "@types/node-fetch": "^2.6.11",
     "eslint": "^8.57.0",
     "eslint-plugin-n": "^16.6.2",
     "eslint-plugin-node": "^11.0.0",
