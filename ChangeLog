@@ -1,3 +1,25 @@
+2024.03.16, v3.0.0
+
+feature:
+- 0c728c5 readbox: @types/node-fetch v2.6.11
+- 61405f0 readbox: nodemon v3.1.0
+- 568372b readbox: pullout v5.0.1
+- 3d65337 readbox: supertape v10.4.0
+- 445a77f readbox: dropboxify v3.0.1
+- 9877a9c readbox: @cloudcmd/dropbox v5.0.2
+- 7723375 readbox: drop support of node < 18
+- 7eef9e8 readbox: eslint-plugin-n v16.6.2
+- 06e4579 readbox: eslint v8.57.0
+- 10c7d00 readbox: eslint-plugin-putout v22.4.1
+- 2232809 readbox: putout v35.7.5
+- 16b8e01 readbox: madrun v10.0.1
+- ad570dd (package) madrun v7.0.0
+- a26d07f (package) supertape v2.0.1
+- 3ea9ba5 (package) putout v9.1.0
+- d6e2e01 (package) eslint-plugin-putout v5.0.1
+- b9c683d (package) eslint v7.3.1
+- d45b41c (package) @cloudcmd/stub v3.1.0
+
 2020.02.26, v2.2.2
 
 feature:

@@ -1,6 +1,6 @@
 {
   "name": "readbox",
-  "version": "2.2.2",
+  "version": "3.0.0",
   "type": "commonjs",
   "main": "lib/readbox.js",
   "description": "dropbox read directory or file",
