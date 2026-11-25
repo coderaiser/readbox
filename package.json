@@ -1,14 +1,14 @@
 {
   "name": "readbox",
   "version": "3.0.0",
-  "type": "commonjs",
+  "type": "module",
   "main": "lib/readbox.js",
   "description": "dropbox read directory or file",
   "author": "",
   "homepage": "http://github.com/coderaiser/readbox",
   "repository": {
     "type": "git",
-    "url": "git://github.com/coderaiser/readbox.git"
+    "url": "git+https://github.com/coderaiser/readbox.git"
   },
   "scripts": {
     "test": "madrun test",
@@ -34,9 +34,7 @@
     "eslint-plugin-node": "^11.0.0",
     "eslint-plugin-putout": "^31.5.0",
     "madrun": "^13.0.4",
-    "mock-require": "^3.0.1",
     "nodemon": "^3.1.0",
-    "nyc": "^15.0.0",
     "pullout": "^5.0.1",
     "putout": "^42.26.3",
     "superc8": "^12.7.0",
@@ -52,7 +50,7 @@
     "dropbox"
   ],
   "engines": {
-    "node": ">=18"
+    "node": ">=22"
   },
   "license": "MIT"
 }
