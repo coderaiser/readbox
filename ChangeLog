@@ -1,3 +1,15 @@
+2026.11.25, v4.0.0
+
+feature:
+- 4c0ac5c readbox: migrate to ESM
+- 0a13b55 readbox: try-to-catch v4.1.0
+- 6a2c9ff readbox: superc8 v12.7.0
+- c110178 readbox: madrun v13.0.4
+- 3f5885f readbox: eslint-plugin-putout v31.5.0
+- fd3ec50 readbox: eslint-plugin-n v18.6.0
+- ec4fc2d readbox: eslint v10.15.0
+- e0b1137 readbox: dropboxify v4.0.0
+
 2024.03.16, v3.0.0
 
 feature:
