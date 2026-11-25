@@ -38,8 +38,9 @@
     "nodemon": "^3.1.0",
     "nyc": "^15.0.0",
     "pullout": "^5.0.1",
-    "putout": "^35.7.5",
-    "supertape": "^10.4.0"
+    "putout": "^42.26.3",
+    "superc8": "^12.7.0",
+    "supertape": "^13.6.2"
   },
   "keywords": [
     "directory",
