@@ -25,7 +25,7 @@
     "dropboxify": "^4.0.0",
     "squad": "^3.0.0",
     "string-to-stream": "^3.0.1",
-    "try-to-catch": "^3.0.0"
+    "try-to-catch": "^4.1.0"
   },
   "devDependencies": {
     "@types/node-fetch": "^2.6.11",
