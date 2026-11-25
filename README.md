@@ -38,13 +38,13 @@ npm i readbox
 #### Example
 
 ```js
+import {readbox} from 'readbox';
+
 const sort = 'size';
 const order = 'desc';
 const token = 'token';
 const path = '/';
 const type = 'raw';
-
-import {readbox} from 'readbox';
 
 const stream = await readbox(token, path, {
     type,
